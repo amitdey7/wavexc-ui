@@ -24,7 +24,7 @@ const Login = () => {
                 </span>
               </div>
               <div className="options">
-                <a href="#" className="forgot-password">
+                <a href="/" className="forgot-password">
                   Forgot password?
                 </a>
               </div>
@@ -36,7 +36,7 @@ const Login = () => {
             </form>
           </div>
           <p className="sign-up">
-            Don't have an account? <a href="#">Sign Up</a>
+            Don't have an account? <a href="/">Sign Up</a>
           </p>
         </div>
       </div>
