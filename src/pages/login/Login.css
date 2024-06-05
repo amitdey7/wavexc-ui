@@ -35,7 +35,7 @@
   margin-bottom: 2rem;
 }
 
-.login-form p {
+.login-form .login-header {
   font-size: 2rem;
   font-weight: 500;
   margin-bottom: 2rem;
@@ -49,10 +49,13 @@ form {
 
 form input {
   padding: 0.75rem;
-  margin-bottom: 1rem;
   border: 1px solid #ccc;
   border-radius: 0.5rem;
   font-size: 1.25rem;
+}
+
+.input-container{
+margin-bottom: 1.5rem;
 }
 
 form input:focus {
@@ -128,6 +131,12 @@ form input:focus {
   text-decoration: underline;
 }
 
+.error-message {
+  color: red;
+  font-size: 1.5rem;
+  text-align: left;
+}
+
 /* Responsive Design */
 @media (max-width: 600px) {
   .auth-container {
@@ -140,7 +149,7 @@ form input:focus {
     width: 80px;
   }
 
-  .login-form p {
+  .login-form .login-header {
     font-size: 1.25rem;
   }
 

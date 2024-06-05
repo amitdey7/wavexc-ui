@@ -9,7 +9,7 @@ const isLocalEnvironment = () => {
 // Get the base URL depending on the environment
 const getBaseUrl = () => {
   if (isLocalEnvironment()) {
-    return 'http://localhost:2000';
+    return 'http://localhost:2000/api';
   } else {
     return `${window.location.origin}/api`;
   }
