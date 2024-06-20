@@ -137,6 +137,9 @@ form input:focus {
   text-align: left;
 }
 
+.api-message {
+  font-size: 15px;
+}
 /* Responsive Design */
 @media (max-width: 600px) {
   .auth-container {

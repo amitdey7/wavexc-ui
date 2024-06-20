@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
-import { useParams } from 'react-router-dom';
 import './ResetPassword.css';
 import Logo from '../../assets/images/logo-black.png';
 import { postData } from '../../service/api';
+import { useNavigate, useSearchParams } from 'react-router-dom';
 
 const ResetPassword = () => {
-  const { token } = useParams();
+  const navigate = useNavigate();
+  const [searchParams] = useSearchParams();
   const [newPassword, setNewPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [showNewPassword, setShowNewPassword] = useState(false);
@@ -38,7 +39,9 @@ const ResetPassword = () => {
     let valid = true;
 
     if (!validatePassword(newPassword)) {
-      setNewPasswordError('Password must contain at least 8 characters including uppercase, lowercase, number, and special character');
+      setNewPasswordError(
+        'Password must contain at least 8 characters including uppercase, lowercase, number, and special character'
+      );
       valid = false;
     }
 
@@ -48,16 +51,18 @@ const ResetPassword = () => {
     }
 
     if (!valid) return;
-
-    const requestData = { newPassword, token }; 
-
-    try {
-      await postData('/auth/reset-password', requestData);
-      setSuccessMessage('Password reset successful. You can now log in with your new password.');
-    } catch (error) {
-      console.error('Error resetting password:', error);
-      setApiError(error.response?.message || 'Failed to reset password. Please try again.');
-    }
+    const token = searchParams.get('token');
+    const requestData = { newPassword, resetToken: token };
+    postData('/auth/reset-password', requestData)
+      .then((response) => {
+        const { token } = response;
+        localStorage.setItem('wavexctoken', token);
+        navigate('/login');
+      })
+      .catch((error) => {
+        console.error('Error login:', error);
+        setApiError(error.response?.message || 'Login failed. Please try again.');
+      });
   };
 
   return (
@@ -132,4 +137,3 @@ const ResetPassword = () => {
 };
 
 export default ResetPassword;
-

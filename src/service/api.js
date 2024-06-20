@@ -9,7 +9,7 @@ const isLocalEnvironment = () => {
 // Get the base URL depending on the environment
 const getBaseUrl = () => {
   if (isLocalEnvironment()) {
-    return 'http://localhost:2000/api';
+    return '/api';
   } else {
     return `${window.location.origin}/api`;
   }
@@ -25,22 +25,19 @@ const api = axios.create({
 
 // Function to get data from service
 export const getData = async (endpoint) => {
-  try {
-    const response = await api.get(endpoint);
-    return response.data;
-  } catch (error) {
-    console.error('Error fetching data:', error);
-    throw error;
-  }
+  return api
+    .get(endpoint)
+    .then((response) => response.data)
+    .catch((error) => {
+      throw error;
+    });
 };
 
-// Function to post data to service
-export const postData = async (endpoint, data) => {
-  try {
-    const response = await api.post(endpoint, data);
-    return response.data;
-  } catch (error) {
-    console.error('Error posting data:', error);
-    throw error;
-  }
+export const postData = (endpoint, data, headers) => {
+  return api
+    .post(endpoint, data, headers)
+    .then((response) => response.data)
+    .catch((error) => {
+      throw error;
+    });
 };

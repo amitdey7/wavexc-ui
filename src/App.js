@@ -9,7 +9,7 @@ function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   useEffect(() => {
-    const token = localStorage.getItem('token');
+    const token = localStorage.getItem('wavexctoken');
     setIsLoggedIn(!!token);
   }, []);
 
@@ -17,8 +17,14 @@ function App() {
     <div className="app-container">
       <Router>
         <Routes>
-          <Route path="/login" element={isLoggedIn ? <Navigate to="/home" /> : <Login />} />
-          <Route path="/home" element={isLoggedIn ? <Home /> : <Navigate to="/login" />} />
+          <Route
+            path="/login"
+            element={isLoggedIn ? <Navigate to="/home" /> : <Login setIsLoggedIn={setIsLoggedIn} />}
+          />
+          <Route
+            path="/home"
+            element={isLoggedIn ? <Home /> : <Navigate to="/login" setIsLoggedIn={setIsLoggedIn} />}
+          />
           <Route path="/reset-password" element={<ResetPassword />} />
           <Route path="/" element={<Navigate to={isLoggedIn ? '/home' : '/login'} />} />
         </Routes>

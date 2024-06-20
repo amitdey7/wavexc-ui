@@ -2,14 +2,17 @@ import React, { useState } from 'react';
 import './Login.css';
 import Logo from '../../assets/images/logo-black.png';
 import { postData } from '../../service/api';
+import { useNavigate } from 'react-router-dom';
 
-const Login = () => {
+const Login = ({ setIsLoggedIn }) => {
+  const navigate = useNavigate();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
   const [emailError, setEmailError] = useState('');
   const [passwordError, setPasswordError] = useState('');
   const [apiError, setApiError] = useState('');
+  const [apiMsg, setApiMsg] = useState('');
 
   const togglePasswordVisibility = () => setShowPassword(!showPassword);
 
@@ -47,12 +50,48 @@ const Login = () => {
     }
 
     if (!valid) return;
-    try {
-      await postData('/auth/login', { email, password });
-    } catch (error) {
-      console.error('Error during login:', error);
-      setApiError(error.response?.message || 'Login failed. Please try again.');
+    if (!validateEmail(email)) {
+      setEmailError('Invalid Email');
+      valid = false;
     }
+    postData('/auth/login', { usernameOrEmail: email, password })
+      .then((response) => {
+        const { token } = response;
+        localStorage.setItem('wavexctoken', token);
+        setIsLoggedIn(true);
+        navigate('/home');
+      })
+      .catch((error) => {
+        const { message } = error?.response?.data;
+        if (message === 'username not found') {
+          setApiError('User not found. Please check the email and try again.');
+        } else if (message === 'Bad credentials') {
+          setApiError('Invalid password. Please try again.');
+        } else {
+          setApiError('Login failed. Please try again.');
+        }
+      });
+  };
+
+  const handleForgotPasswordClick = async (event) => {
+    event.preventDefault();
+    if (!validateEmail(email)) {
+      setEmailError('Invalid Email');
+      return;
+    }
+    postData('/auth/forget-password', email, {
+      headers: {
+        'Content-Type': 'application/plain',
+      },
+    })
+      .then(() => {
+        navigate('/login');
+      })
+      .catch((error) => {
+        console.error('Error login:', error);
+        setApiError(error.response?.message || 'Login failed. Please try again.');
+      });
+    setApiMsg('Reset password link has been sent to your email. Please check your inbox.');
   };
 
   return (
@@ -103,7 +142,7 @@ const Login = () => {
                 {passwordError && <p className="error-message">{passwordError}</p>}
               </div>
               <div className="options">
-                <a href="/" className="forgot-password">
+                <a href="/" className="forgot-password" onClick={handleForgotPasswordClick}>
                   Forgot password?
                 </a>
               </div>
@@ -113,10 +152,11 @@ const Login = () => {
                 </button>
               </div>
               {apiError && <p className="error-message">{apiError}</p>}
+              {apiMsg && <p className="api-message">{apiMsg}</p>}
             </form>
           </div>
           <p className="sign-up">
-            Don't have an account? <a href="/">Sign Up</a>
+            Don't have an account? <a href="/">Contact us</a>
           </p>
         </div>
       </div>
