@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import './Login.css';
 import Logo from '../../assets/images/logo-black.png';
 import { postData } from '../../service/api';
@@ -12,7 +13,7 @@ const Login = ({ setIsLoggedIn }) => {
   const [emailError, setEmailError] = useState('');
   const [passwordError, setPasswordError] = useState('');
   const [apiError, setApiError] = useState('');
-  const [apiMsg, setApiMsg] = useState('');
+ 
 
   const togglePasswordVisibility = () => setShowPassword(!showPassword);
 
@@ -73,27 +74,7 @@ const Login = ({ setIsLoggedIn }) => {
       });
   };
 
-  const handleForgotPasswordClick = async (event) => {
-    event.preventDefault();
-    if (!validateEmail(email)) {
-      setEmailError('Invalid Email');
-      return;
-    }
-    postData('/auth/forget-password', email, {
-      headers: {
-        'Content-Type': 'application/plain',
-      },
-    })
-      .then(() => {
-        navigate('/login');
-      })
-      .catch((error) => {
-        console.error('Error login:', error);
-        setApiError(error.response?.message || 'Login failed. Please try again.');
-      });
-    setApiMsg('Reset password link has been sent to your email. Please check your inbox.');
-  };
-
+  
   return (
     <div className="login-page">
       <div className="login-container">
@@ -142,17 +123,17 @@ const Login = ({ setIsLoggedIn }) => {
                 {passwordError && <p className="error-message">{passwordError}</p>}
               </div>
               <div className="options">
-                <a href="/" className="forgot-password" onClick={handleForgotPasswordClick}>
+                <Link to="/forgot-password" className="forgot-password">
                   Forgot password?
-                </a>
-              </div>
+                </Link>
+                </div>
               <div className="buttons">
                 <button type="submit" className="login-button">
                   Log In
                 </button>
               </div>
               {apiError && <p className="error-message">{apiError}</p>}
-              {apiMsg && <p className="api-message">{apiMsg}</p>}
+             
             </form>
           </div>
           <p className="sign-up">

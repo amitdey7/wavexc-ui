@@ -4,6 +4,7 @@ import './App.css';
 import Login from './pages/login/Login';
 import Home from './pages/home/Home';
 import ResetPassword from './pages/resetpassword/ResetPassword';
+import ForgotPassword from './pages/forgotpassword/ForgotPassword';
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -25,6 +26,7 @@ function App() {
             path="/home"
             element={isLoggedIn ? <Home /> : <Navigate to="/login" setIsLoggedIn={setIsLoggedIn} />}
           />
+          <Route path="/forgot-password" element={<ForgotPassword />} />
           <Route path="/reset-password" element={<ResetPassword />} />
           <Route path="/" element={<Navigate to={isLoggedIn ? '/home' : '/login'} />} />
         </Routes>
