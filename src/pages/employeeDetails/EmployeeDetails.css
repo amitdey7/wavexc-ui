@@ -1,0 +1,41 @@
+.employee-details-container {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.employee-details-main-conatiner {
+  flex-direction: row;
+}
+
+.employee-name-header {
+  padding: 1rem 2rem;
+}
+
+.employee-basic-details-grid {
+  padding: 1rem 2rem;
+}
+
+.header-field {
+  padding: 0.5rem;
+}
+
+.header-divider {
+  margin: 14px 0 0 0;
+}
+
+.employee-details-nav.rs-nav-subtle .rs-nav-item {
+  font-size: medium;
+  font-weight: bold;
+}
+
+.employee-details-nav {
+  border-bottom: 1px solid #e5e5ea;
+  background: #f5f6f7;
+}
+
+.nav-component {
+  overflow: auto;
+  height: calc(100vh - 17.5rem);
+}

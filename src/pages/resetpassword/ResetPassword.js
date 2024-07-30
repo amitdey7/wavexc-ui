@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import './ResetPassword.css';
 import Logo from '../../assets/images/logo-black.png';
 import { postData } from '../../service/api';
-import { useNavigate, useSearchParams } from 'react-router-dom';
+import { useNavigate, useSearchParams, Link } from 'react-router-dom';
 
 const ResetPassword = () => {
   const navigate = useNavigate();
@@ -61,19 +61,19 @@ const ResetPassword = () => {
       })
       .catch((error) => {
         console.error('Error login:', error);
-        setApiError(error.response?.message || 'Login failed. Please try again.');
+        setApiError(error.response?.message || 'Failed to reset password. Please try again.');
       });
   };
 
   return (
-    <div className="reset-page">
-      <div className="reset-container">
-        <div className="reset-section">
+    <div className="reset-password-page">
+      <div className="reset-password-container">
+        <div className="reset-password-section">
           <div className="logo">
-            <img src={Logo} alt="Logo" />
+            <img src={Logo} alt="WAVEXC" />
           </div>
-          <div className="reset-form">
-            <p className="reset-header">Reset Your Password</p>
+          <div className="reset-password-form">
+            <p className="reset-password-header">Reset Your Password</p>
             <form onSubmit={handleResetPassword}>
               <div className="input-container">
                 <input
@@ -82,17 +82,15 @@ const ResetPassword = () => {
                   value={newPassword}
                   onChange={(e) => {
                     setNewPassword(e.target.value);
+
                     setNewPasswordError('');
                   }}
                   placeholder="New Password"
-                  className="px-3 py-2 rounded-md border border-gray-300 focus:outline-none focus:ring-1 focus:ring-blue-500 w-full"
                   required
                 />
                 <span className="toggle-password">
                   <i
-                    className={`absolute inset-y-1/2 right-3 cursor-pointer text-gray-400 hover:text-gray-600 transition duration-200 ease-in-out ${
-                      showNewPassword ? 'fas fa-eye-slash' : 'fas fa-eye'
-                    }`}
+                    className={`${showNewPassword ? 'fas fa-eye-slash' : 'fas fa-eye'}`}
                     onClick={toggleNewPasswordVisibility}
                   ></i>
                 </span>
@@ -108,26 +106,28 @@ const ResetPassword = () => {
                     setConfirmPasswordError('');
                   }}
                   placeholder="Confirm Password"
-                  className="px-3 py-2 rounded-md border border-gray-300 focus:outline-none focus:ring-1 focus:ring-blue-500 w-full"
                   required
                 />
+
                 <span className="toggle-password">
                   <i
-                    className={`absolute inset-y-1/2 right-3 cursor-pointer text-gray-400 hover:text-gray-600 transition duration-200 ease-in-out ${
-                      showConfirmPassword ? 'fas fa-eye-slash' : 'fas fa-eye'
-                    }`}
+                    className={` ${showConfirmPassword ? 'fas fa-eye-slash' : 'fas fa-eye'}`}
                     onClick={toggleConfirmPasswordVisibility}
                   ></i>
                 </span>
                 {confirmPasswordError && <p className="error-message">{confirmPasswordError}</p>}
               </div>
+
               <div className="buttons">
                 <button type="submit" className="reset-button">
                   Reset Password
                 </button>
               </div>
+              <div className="back-to-login">
+                <Link to="/login">Back to Login</Link>
+              </div>
               {apiError && <p className="error-message">{apiError}</p>}
-              {successMessage && <p className="success-message">{successMessage}</p>}
+              {successMessage && <p className="api-message">{successMessage}</p>}
             </form>
           </div>
         </div>

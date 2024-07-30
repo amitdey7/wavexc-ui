@@ -13,7 +13,6 @@ const Login = ({ setIsLoggedIn }) => {
   const [emailError, setEmailError] = useState('');
   const [passwordError, setPasswordError] = useState('');
   const [apiError, setApiError] = useState('');
- 
 
   const togglePasswordVisibility = () => setShowPassword(!showPassword);
 
@@ -55,12 +54,13 @@ const Login = ({ setIsLoggedIn }) => {
       setEmailError('Invalid Email');
       valid = false;
     }
+
     postData('/auth/login', { usernameOrEmail: email, password })
       .then((response) => {
         const { token } = response;
         localStorage.setItem('wavexctoken', token);
         setIsLoggedIn(true);
-        navigate('/home');
+        navigate('/employees');
       })
       .catch((error) => {
         const { message } = error?.response?.data;
@@ -74,13 +74,12 @@ const Login = ({ setIsLoggedIn }) => {
       });
   };
 
-  
   return (
     <div className="login-page">
       <div className="login-container">
         <div className="login-section">
           <div className="logo">
-            <img src={Logo} alt="Logo" />
+            <img src={Logo} alt="WAVEXC" />
           </div>
           <div className="login-form">
             <p className="login-header">Login To Your Account</p>
@@ -94,7 +93,7 @@ const Login = ({ setIsLoggedIn }) => {
                     setEmailError('');
                   }}
                   placeholder="Enter your email"
-                  className="px-3 py-2 rounded-md border border-gray-300 focus:outline-none focus:ring-1 focus:ring-blue-500 w-full"
+                  className="input-field"
                   required
                 />
                 {emailError && <p className="error-message">{emailError}</p>}
@@ -109,34 +108,28 @@ const Login = ({ setIsLoggedIn }) => {
                     setPasswordError('');
                   }}
                   placeholder="Enter your password"
-                  className="px-3 py-2 rounded-md border border-gray-300 focus:outline-none focus:ring-1 focus:ring-blue-500 w-full"
+                  className="input-field"
                   required
                 />
-                <span className="toggle-password">
-                  <i
-                    className={`absolute inset-y-1/2 right-3 cursor-pointer text-gray-400 hover:text-gray-600 transition duration-200 ease-in-out ${
-                      showPassword ? 'fas fa-eye-slash' : 'fas fa-eye'
-                    }`}
-                    onClick={togglePasswordVisibility}
-                  ></i>
+                <span className="toggle-password" onClick={togglePasswordVisibility}>
+                  <i className={`icon ${showPassword ? 'fa-eye-slash' : 'fa-eye'}`}></i>
                 </span>
                 {passwordError && <p className="error-message">{passwordError}</p>}
               </div>
-              <div className="options">
-                <Link to="/forgot-password" className="forgot-password">
+              <div className="forgot-password">
+                <Link to="/forgot-password" className="forgot-password-link">
                   Forgot password?
                 </Link>
-                </div>
+              </div>
               <div className="buttons">
                 <button type="submit" className="login-button">
                   Log In
                 </button>
               </div>
               {apiError && <p className="error-message">{apiError}</p>}
-             
             </form>
           </div>
-          <p className="sign-up">
+          <p className="contact-us">
             Don't have an account? <a href="/">Contact us</a>
           </p>
         </div>

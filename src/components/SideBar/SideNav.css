@@ -1,0 +1,36 @@
+.sidenav-container {
+  padding-top: 1px;
+  box-shadow: 2px -1px 3px rgb(159 159 159);
+  width: fit-content;
+  overflow: hidden;
+}
+
+.sidenav {
+  height: 100%; 
+  background: #13497b; 
+  transition: width 0.1s linear;
+}
+
+.sidenav .rs-sidenav-body .rs-nav .rs-nav-item .rs-nav-item-content {
+  color: white; 
+}
+
+.sidenav .rs-sidenav-body .rs-nav .rs-nav-item.rs-nav-item-active .rs-nav-item-content {
+  background: white;
+  color: #13497b;
+}
+
+.sidenav .rs-sidenav-body .rs-nav .rs-nav-item.rs-nav-item-active .rs-icon {
+  color: #13497b;
+}
+
+.sidenav.rs-sidenav .rs-sidenav-body .rs-sidenav-nav .rs-sidenav-item {
+  background-color: #13497b;
+  color: #ffff;
+  border-bottom: 1px solid #ffffff8c;
+}
+
+.sidenav.rs-sidenav .rs-sidenav-body .rs-sidenav-nav  .rs-sidenav-item.rs-sidenav-item-active {
+  background-color: #ffff;
+  color: #13497b;
+}

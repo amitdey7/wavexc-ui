@@ -2,7 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { Routes, BrowserRouter as Router, Route, Navigate } from 'react-router-dom';
 import './App.css';
 import Login from './pages/login/Login';
-import Home from './pages/home/Home';
+import Employees from './pages/employees/Employee';
+import EmployeeDetails from './pages/employeeDetails/EmployeeDetails';
 import ResetPassword from './pages/resetpassword/ResetPassword';
 import ForgotPassword from './pages/forgotpassword/ForgotPassword';
 
@@ -20,15 +21,23 @@ function App() {
         <Routes>
           <Route
             path="/login"
-            element={isLoggedIn ? <Navigate to="/home" /> : <Login setIsLoggedIn={setIsLoggedIn} />}
-          />
-          <Route
-            path="/home"
-            element={isLoggedIn ? <Home /> : <Navigate to="/login" setIsLoggedIn={setIsLoggedIn} />}
+            element={
+              isLoggedIn ? <Navigate to="/employees" /> : <Login setIsLoggedIn={setIsLoggedIn} />
+            }
           />
           <Route path="/forgot-password" element={<ForgotPassword />} />
           <Route path="/reset-password" element={<ResetPassword />} />
-          <Route path="/" element={<Navigate to={isLoggedIn ? '/home' : '/login'} />} />
+          <Route path="/" element={<Navigate to={isLoggedIn ? '/employees' : '/login'} />} />
+          <Route
+            path="/employees/:employeeId"
+            element={isLoggedIn ? <EmployeeDetails /> : <Navigate to="/login" />}
+          />
+          <Route
+            path="/employees"
+            element={
+              isLoggedIn ? <Employees /> : <Navigate to="/login" setIsLoggedIn={setIsLoggedIn} />
+            }
+          />
         </Routes>
       </Router>
     </div>

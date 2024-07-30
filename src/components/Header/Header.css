@@ -1,0 +1,95 @@
+.header-bar {
+  background: #13497b;
+  color: #ffffff;
+}
+
+.header-bar-logo {
+  padding: 0;
+}
+
+.sidebar-toggle-button.rs-navbar-item {
+  color: #ffffff;
+  width: 3.5rem;
+}
+
+.sidebar-toggle-button.rs-navbar-item:hover {
+  background-color: #ffffff;
+  color: #13497b;
+}
+
+.header-bar-logo.rs-navbar-item:hover {
+  background: #13497b;
+  color: #ffffff;
+  cursor: auto;
+}
+
+.header-right-content {
+  display: flex;
+  align-items: center;
+  height: 3rem;
+  margin-right: 1rem;
+}
+
+.notification-icon {
+  padding: 0.5rem;
+  display: flex;
+  align-items: center;
+}
+
+.notification-icon:hover {
+  background: #13497b;
+  color: #ffffff;
+  font-size: 18px;
+  transition: 0.1s;
+  cursor: pointer;
+}
+
+.notification-icon .rs-navbar-item-icon {
+  color: #ffffff;
+}
+
+.notification-icon:hover .rs-navbar-item-icon:hover {
+  font-size: 20px;
+  transition: 0.1s;
+}
+
+.profile {
+  color: #656262;
+}
+
+.profile:hover {
+  background: #13497b;
+}
+
+.profile-card {
+  display: flex;
+  align-items: center;
+  background-color: #f0f0f0;
+  border-radius: 10px;
+  height: 2.5rem;
+  margin-left: 1rem;
+  padding-left: 0.5rem;
+}
+
+.profile-details {
+  flex-grow: 1;
+  padding: 0.25rem 2rem 0.25rem 0.5rem;
+}
+
+.profile-name {
+  font-weight: bold;
+  display: block;
+  color: #303030;
+}
+
+.profile-role {
+  color: #777;
+  font-size: 12px;
+}
+
+.profile-dropdown-icon {
+  cursor: pointer;
+  font-size: 15px;
+  color: #777;
+  margin-right: 1rem;
+}

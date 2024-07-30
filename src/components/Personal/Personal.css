@@ -1,0 +1,63 @@
+.personal-detail-panel{
+  margin: 1rem;
+  border: 1px solid rgba(128, 128, 128, 0.336);
+  font-family: "72", "72full", Arial, Helvetica, sans-serif;
+}
+
+.personal-detail-panel .rs-panel-body{
+ padding-top: 1rem;
+}
+
+.personal-detail-panel .rs-panel-header {
+  padding: 10px 20px;
+  border-bottom: 1px solid #d4d4d4;
+}
+
+.form-field {
+  margin: 0.5rem 0;
+}
+
+.form-field .rs-form-control.rs-form-control-wrapper {
+  display: block;
+  padding-right: 3rem;
+}
+
+.form-field .rs-form-control.rs-form-control-wrapper .rs-input{
+  width: 100%
+}
+
+.form-field .rs-form-control.rs-form-control-wrapper .rs-picker-select{
+  width: 100%
+}
+
+.form-field .rs-plaintext {
+  font-size: larger;
+  font-weight: 500;
+  color: #1d2d3e;
+  margin-bottom: 0.5rem;
+}
+
+.primary-btn.rs-btn.rs-btn-primary {
+  background-color: #1a62a4;
+}
+
+.ghost-btn.rs-btn.rs-btn-ghost {
+  border-color: #1a62a4;
+  color: #1a62a4;
+}
+
+.identity-table-headercell {
+  font-size: 16px;
+}
+
+.identity-card-type-selection {
+ display: block;
+ padding-right: 2rem; 
+}
+
+.identity-table-cell .rs-plaintext {
+  font-size: larger;
+  font-weight: 500;
+  color: #1d2d3e;
+  margin-bottom: 0.5rem;
+}

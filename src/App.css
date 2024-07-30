@@ -1,21 +1,19 @@
-@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css');
 
 :root {
   --primary-color: #003366;
   --secondary-color: #007bff;
-}
-
-html {
-  font-size: 11px;
+  --rs-font-family: "72", "72full", Arial, Helvetica, sans-serif;
 }
 
 body {
-  font-family: 'Arial', sans-serif;
-  font-size: 1.6rem;
-  background: linear-gradient(135deg, rgba(4, 0, 73, 1) 0%, rgba(0, 48, 94, 1) 49%, rgba(28, 165, 190, 1) 100%);
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
   margin: 0;
+  overflow: hidden;
+}
+
+body, html {
+  font-family: "72", "72full", Arial, Helvetica, sans-serif;
 }

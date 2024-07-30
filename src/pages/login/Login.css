@@ -1,11 +1,12 @@
 
 .login-page {
   font-family: 'Arial', sans-serif;
-  font-size: 1.6rem;
   background: linear-gradient(135deg, rgba(4, 0, 73, 1) 0%, rgba(0, 48, 94, 1) 49%, rgba(28, 165, 190, 1) 100%);
   display: flex;
   justify-content: center;
   align-items: center;
+  width: 100vw;
+  height: 100vh;
 }
 
 .login-container {
@@ -18,7 +19,7 @@
 
 .login-section {
   background-color: #fff;
-  padding: 2rem;
+  padding: 2rem 1.5rem;
   border-radius: 0.5rem;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   width: 100%;
@@ -35,36 +36,35 @@
   margin-bottom: 2rem;
 }
 
-.login-form .login-header {
-  font-size: 2rem;
+.login-header {
+  font-size: 1.5rem;
   font-weight: 500;
-  margin-bottom: 2rem;
+  margin-bottom: 1.5rem;
   color: var(--primary-color);
 }
 
-form {
+.login-form form {
   display: flex;
   flex-direction: column;
 }
 
-form input {
-  padding: 0.75rem;
+.login-form form input {
+  padding: 0.5rem;
   border: 1px solid #ccc;
   border-radius: 0.5rem;
-  font-size: 1.25rem;
+  font-size: 1rem;
+  margin: 0 1.5rem;
+  width: -webkit-fill-available;
+  font-size: 0.875rem;
 }
 
-.input-container{
-margin-bottom: 1.5rem;
+.input-container {
+  margin-bottom: 1.25rem;
 }
 
-form input:focus {
+.login-form form input:focus {
   outline: none;
   border-color: var(--primary-color);
-}
-
-.password-container {
-  position: relative;
 }
 
 .toggle-password {
@@ -77,19 +77,20 @@ form input:focus {
   color: var(--primary-color);
 }
 
-.options {
+.forgot-password {
   display: flex;
   justify-content: space-between;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1rem;
+  margin-left: 1.5rem;
 }
 
-.forgot-password {
-  font-size: 1.25rem;
+.forgot-password-link {
+  font-size: 1rem;
   color: var(--secondary-color);
   text-decoration: none;
 }
 
-.forgot-password:hover {
+.forgot-password-link:hover {
   text-decoration: underline;
 }
 
@@ -103,7 +104,7 @@ form input:focus {
 .login-button {
   background-color: var(--primary-color);
   color: #fff;
-  padding: 0.75rem;
+  padding: 0.5rem;
   border: none;
   border-radius: 2rem;
   font-size: 1.25rem;
@@ -116,75 +117,27 @@ form input:focus {
   background-color: #1170cf;
 }
 
-.sign-up {
-  margin-top: 2rem;
-  font-size: 1.25rem;
+.contact-us {
+  margin-top: 1rem;
+  font-size: 1rem;
 }
 
-.sign-up a {
+.contact-us a {
   color: var(--secondary-color);
   text-decoration: none;
   font-weight: 600;
 }
 
-.sign-up a:hover {
+.contact-us a:hover {
   text-decoration: underline;
 }
 
 .error-message {
   color: red;
-  font-size: 1.5rem;
+  font-size: 1rem;
   text-align: left;
 }
 
 .api-message {
   font-size: 15px;
-}
-/* Responsive Design */
-@media (max-width: 600px) {
-  .auth-container {
-    padding: 1rem;
-    box-shadow: none;
-    border-radius: 0.3rem;
-  }
-
-  .logo img {
-    width: 80px;
-  }
-
-  .login-form .login-header {
-    font-size: 1.25rem;
-  }
-
-  form input {
-    padding: 0.75rem;
-    font-size: 0.875rem;
-  }
-
-  .toggle-password {
-    font-size: 0.875rem;
-  }
-
-  .options {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 0.5rem;
-  }
-
-  .forgot-password {
-    font-size: 0.75rem;
-  }
-
-  .buttons {
-    gap: 0.5rem;
-  }
-
-  .login-button {
-    padding: 0.75rem;
-    font-size: 0.875rem;
-  }
-
-  .sign-up {
-    font-size: 0.75rem;
-  }
 }
